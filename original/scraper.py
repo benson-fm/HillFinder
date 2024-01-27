@@ -85,7 +85,8 @@ def rank_area(area, priority):
 
     return score * priority
 
-
+def total_scores(price_score, bed_score, bath_score, area_score):
+    return price_score + bed_score + bath_score + area_score #+ bathscore
 
 # @app.get(':/searchboba/<location>')
 def get_boba():
@@ -95,7 +96,8 @@ def get_boba():
     response_content = json.loads(response.text)
     print(response_content['businesses'][0]['name'])
     print(response_content['businesses'][0]['distance'])
-    boba_score = rank_boba(response_content['businesses'][0]['distance'])
+    boba_priority = 2
+    boba_score = rank_boba(response_content['businesses'][0]['distance'], boba_priority)
 
 
 
@@ -111,12 +113,15 @@ def get_listings()-> list:
     #@get_prios price_priorty = x, bed_priorty = x, bath-prop......
     #.5, 1, 2
     price_priority = 2
+    bed_priorty = 2
+    bath_priority = 2
+    area_priority = 2
     for listing in content:
         listing_data = dict()
         listing_data['address'] = listing['address']
         if 'price' in listing.keys():
             listing_data['price'] = make_int(listing['price'])
-            listing_data['price_score'] = rank_price(listing_data['price'], price_priority)#get price score from front end form
+            price_score = rank_price(listing_data['price'], price_priority)#get price score from front end form
         else:
             units = listing['units']
             temp = units[0]
@@ -127,12 +132,16 @@ def get_listings()-> list:
                     lowest = make_int(unit['price'])
 
             listing_data['price'] = lowest
-            listing_data['price_score'] = rank_price(listing_data['price'], price_priority)#get price score from front end form
+            price_score = rank_price(listing_data['price'], price_priority)#get price score from front end form
 
         listing_data['imgSrc'] = listing['imgSrc']
         listing_data['beds'] = listing['beds']
+        bed_score = rank_price(listing_data['beds'], bed_priorty)
         listing_data['baths'] = listing['baths']
+        bath_score = rank_price(listing_data['baths'], bath_priority)
         listing_data['area'] = listing['area']
+        area_score = rank_price(listing_data['area'], area_priority)
+        listing_data['overall_score'] = total_scores(price_score, bed_score, bath_score, area_score) #get boba score in here somehow as well
         listings.append(listing_data)
     return listings
 

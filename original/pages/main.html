@@ -8,18 +8,21 @@
 </head>
 <body>
     <div class="grid-container">
-        <div class="item1">   
-            <div>
-                <ul>
-                    <li id="logo">HillFinder</li>
-                    <li id="quote">finding your hill</li>
-                </ul>
+        <div class="item1"
+            <header>
+                <div id="navbar" class="grid-container-head">
+                    <ul>
+                        <li class="item1-header">HillFinder</li>
+                        <li class="item2-header">finding your hill</li>
+                    </ul>
+                </div>
+            </header>
+
+            <div id="listingsText">
+                <h2 id="listingsTitle">Top 6 Available Listings</h2>
+                <p id="items">6 items</p>
             </div>
-            <div>
-                <h2 id="listings-title">Available Listings</h2>
-                <p id="listings-num">6 items</p>
-            </div>
-            <hr id="divider">
+            <hr>
         </div>
 
         <div class="item2">
@@ -117,36 +120,31 @@
             <div id="filters">
                 <div id="filterCard">
                     <div class="container">
-                        <div class="filterPrice">
-                            <h4 class="filterName"><b>Price Maximum</b></h4> 
-                            <div class="dropdown">
-                                <button class="dropbtn">Options</button>
-                                <div class="dropdown-content">
-                                    <a href="#">$1500</a>
-                                    <a href="#">$2000</a>
-                                    <a href="#">$2500</a>
+                        <form action="" id="filterForm">
+                            <h3 id="filtersTitle">Filters</h1>
+                                <div id="filterPrice" class="filterRow">
+                                    <h5 class="filterName"><b>Price Maximum</b></h4>
+                                    <select name="selectPrice" id="selectPrice">
+                                        <option value="low">Broke College Student</option>
+                                        <option value="medium">Loaded College Student</option>
+                                        <option value="high" selected>Legacy Student</option>
+                                    </select>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="filterDistance">
-                            <h4 class="filterName"><b>Di</b></h4> 
-                            <div class="dropdown">
-                                <button class="dropbtn">Options</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                <div id="filterDistance" class="filterRow">
+                                    <h5 class="filterName"><b>Distance Maximum</b></h4>
+                                    <select name="selectDistance" id="selectDistance">
+                                        <option value="low">Walker</option>
+                                        <option value="medium">Biker</option>
+                                        <option value="high" selected>Driver</option>
+                                    </select>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="filterbed">
-                            <h4 class="filterName"><b>Bed Options</b></h4> 
-                            <div class="dropdown">
-                                <button class="dropbtn">Options</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                <div id="filterBed" class="filterRow">
+                                    <h5 class="filterName"><b>Number of Beds</b></h4> 
+                                    <select name="selectBed" id="selectBed">
+                                        <option value="low">No Bodies</option>
+                                        <option value="medium">Some Bodies</option>
+                                        <option value="high" selected>A Lot of Bodies</option>
+                                    </select>
                                 </div>
                                 <div id="filterBath" class="filterRow">
                                     <h5 class="filterName"><b>Number of Baths</b></h4>
@@ -156,19 +154,16 @@
                                         <option value="high" selected>Dirty Rag</option>
                                     </select>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="filterBoba">
-                            <h4 class="filterName"><b>Boba Feels</b></h4> 
-                            <div class="dropdown">
-                                <button class="dropbtn">Options</button>
-                                <div class="dropdown-content">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                <div id="filterBoba" class="filterRow">
+                                    <h5 class="filterName"><b>Boba Feels</b></h4> 
+                                    <select name="selectBoba" id="selectBoba">
+                                        <option value="low">Alien</option>
+                                        <option value="medium">Average UCI Student</option>
+                                        <option value="high" selected>Boba Fein</option>
+                                    </select>
                                 </div>
 
-                                
+                                <input type="submit" value="Send Request" />
                         </form>
                     </div>
                 </div>

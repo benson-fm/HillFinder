@@ -1,4 +1,4 @@
-function get_distance() {
+function getDistance() {
     const service = new google.maps.DistanceMatrixService();
     // build request
     const origin1 = "UC Irvine";
@@ -19,7 +19,19 @@ function get_distance() {
         time = response["rows"][0]["elements"][0]["duration"]["text"]
         console.log(distanceMiles)
         console.log(time)
+    
+        data = {
+            "distance": distanceMiles,
+            "time": time
+        }
+
+        return data
     })
 }
 
-get_distance()
+// send data to python with Flask
+function sendData(data) {
+    console.log(data)    
+}
+
+sendData(getDistance())

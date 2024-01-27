@@ -7,9 +7,10 @@ app = Flask(__name__)
 #yelp api key: 
 _YELP_API_KEY = 'a--O_Ir2DPGxKHftjr2DC5aPymbFZ9X95tfRzEs0PB3eewr8btwTSjfKjRaInCpuQ7tw311U5SsLRkCGBzpgvC7PRz0y_HEUY8R58gClGMXrwrmGgj70UTmeIEK1ZXYx'
 _YELP_URL = 'https://api.yelp.com/v3/businesses/search'
-_YELP_PARAMETERS = {"term": 'Boba', 
+_YELP_PARAMETERS = {'location':'University of California, Irvine',
+                    "term": 'Boba', 
                     "sort_by": "distance",
-                    "limit": 3}
+                    "limit": 10}
 
 
 #/ Set your API key and listing URL
@@ -30,13 +31,73 @@ def make_int(price: str) -> int:
 
     return int(new)
 
-@app.get('/searchboba/<location>')
-def get_boba(location):
-    _YELP_PARAMETERS['location'] = location
+
+def rank_price(price, priority):
+    if price <= 2300:
+        score = 3
+    elif price < 15000:
+        score = 2 
+    else:
+        score = 1
+
+    return score * priority
+    
+
+def rank_boba(distance, priority):
+    if distance <= 300:
+        score = 3
+    elif distance < 3000:
+        score = 2
+    else:
+        score = 1
+
+    return score * priority
+
+def rank_bed(beds, priority):
+    if beds > 5:
+        score = 3
+    elif beds >= 3:
+        score = 2
+    else:
+        score = 1
+
+    return score * priority
+
+
+def rank_bath(baths, priority):
+    if baths > 4:
+        score = 3
+    elif baths > 2:
+        score = 2
+    else:
+        score = 1
+
+    return score * priority
+
+
+def rank_area(area, priority):
+    if area > 5000:
+        score = 3
+    elif area > 2000:
+        score = 2
+    else:
+        score = 1
+
+    return score * priority
+
+
+
+# @app.get(':/searchboba/<location>')
+def get_boba():
+
+    # _YELP_PARAMETERS['location'] = location
     response = requests.get(_YELP_URL, params=_YELP_PARAMETERS, headers= {'Authorization':'Bearer ' + _YELP_API_KEY})
     response_content = json.loads(response.text)
     print(response_content['businesses'][0]['name'])
     print(response_content['businesses'][0]['distance'])
+    boba_score = rank_boba(response_content['businesses'][0]['distance'])
+
+
 
 get_boba()
 
@@ -47,11 +108,15 @@ def get_listings()-> list:
     response_content = json.loads(response.text)
     content = response_content['data']['cat1']['searchResults']['listResults']
     listings = list()
+    #@get_prios price_priorty = x, bed_priorty = x, bath-prop......
+    #.5, 1, 2
+    price_priority = 2
     for listing in content:
         listing_data = dict()
         listing_data['address'] = listing['address']
         if 'price' in listing.keys():
             listing_data['price'] = make_int(listing['price'])
+            listing_data['price_score'] = rank_price(listing_data['price'], price_priority)#get price score from front end form
         else:
             units = listing['units']
             temp = units[0]
@@ -62,12 +127,18 @@ def get_listings()-> list:
                     lowest = make_int(unit['price'])
 
             listing_data['price'] = lowest
+            listing_data['price_score'] = rank_price(listing_data['price'], price_priority)#get price score from front end form
+
         listing_data['imgSrc'] = listing['imgSrc']
         listing_data['beds'] = listing['beds']
         listing_data['baths'] = listing['baths']
         listing_data['area'] = listing['area']
         listings.append(listing_data)
     return listings
+
+
+
+
                 
 
 

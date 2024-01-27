@@ -1,38 +1,38 @@
 /* ul won't have bullets and margin and padding is set to 
 0 */
 
+@import url('https://fonts.googleapis.com/css?family=Nerko+One');
+@import url('https://fonts.googleapis.com/css?family=NATS');
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-#navbar li {
+li {
     display: inline;
     color: #1B3D6D;
 }
 
-
-/*  header grids
-.grid-container-head {
-    display: grid;
-    background-color: white;
-    grid-template-columns: auto auto;
-    padding: 10px;
-    font-size: 75px;
+#logo {
+    float: left;
+    font-family: "Nerko One", sans-serif;
+    
 }
 
-.item1-header {
-    grid-column: 1;
-    text-align: left;
-    font-family: 'NATS';
+#quote {
+    float: right;
 }
 
-.item2-header {
-    grid-column: 2;
-    text-align: right;
-    font-family: 'Nerko One';
-} */
+#listing-title {
+    float: right;
+}
+
+#listing-nums {
+    display: inline;
+}
+
 
 .item1 { grid-area: header; }
 .item2 { grid-area: listing-cards; }
@@ -56,7 +56,39 @@ ul {
   font-size: 30px;
 }
 
+/* .item1-header {
+    grid-area: logo;
+}
 
+.item2-header {
+    grid-area: quote;
+}
+
+.item3-header {
+    grid-area: listings-title;
+}
+
+.item4-header {
+    grid-area: divider;
+}
+
+
+.grid-container-header {
+    display: grid;
+    grid-template-areas:
+        'logo quote'
+        'listings-title listings-title'
+        'divider divider';
+    gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.item {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+    font-size: 30px;
+  } */
 
 
 /* Listings Text */

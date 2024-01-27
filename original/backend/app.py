@@ -88,7 +88,7 @@ def rank_area(area, priority):
 def total_scores(price_score, bed_score, bath_score, area_score):
     return price_score + bed_score + bath_score + area_score #+ bathscore
 
-# @app.get(':/searchboba/<location>')
+@app.route('/searchboba/<location>')
 def get_boba():
 
     # _YELP_PARAMETERS['location'] = location
@@ -104,7 +104,7 @@ def get_boba():
 get_boba()
 
 #/ Make the API request
-@app.get('/searchlistings')
+@app.route('/searchlistings')
 def get_listings()-> list:
     response = requests.get(_ZILLOW_API_URL, params=_ZILLOW_PARAMETERS)
     response_content = json.loads(response.text)
@@ -149,6 +149,9 @@ def get_listings()-> list:
 
 
                 
+if __name__ == '__main__':
+    app.run()
+
 
 
             

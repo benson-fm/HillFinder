@@ -6,6 +6,13 @@
     <title>HillFinder</title>
     <link rel="stylesheet" href="../main.css">
 </head>
+<script>
+    const url = 'http://127.0.0.1:5000'
+    const response = fetch(url + '/searchlistings')
+    .then(response => response.json())
+    .then(json=> {
+        console.log(json);
+    })</script>
 <body>
     <div class="grid-container">
         <div class="item1">

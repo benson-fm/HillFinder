@@ -251,6 +251,10 @@ select:focus{
     font-size: 20px;
 }
 
+#submitButton:hover {
+    cursor: crosshair;
+}
+
 /* Colors
 UCI Blue: #0064a4
 UCI Gold: #ffd200

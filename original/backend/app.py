@@ -161,6 +161,13 @@ def get_listings(price_status, bed_status)-> list:
         listing_data['overall_score'] = total_scores(price_score, bed_score) #get boba score in here somehow as well
 
         listings.append(listing_data)
+        
+    # listings = list(filter(lambda x: len(x['address']) <= 18, listings))
+    for listing in listings:
+        if listing['address'] == 'Rize Irvine, 1100 Synergy #1158, Irvine, CA 92614':
+            listing['address'] = "1100 Synergy"
+        if listing['address'] == 'Avella Apartment Homes, 6500 Roosevelt #1138, Irvine, CA 92618':
+            listing['address'] = "6500 'Roosevelt"
     return listings
 
 

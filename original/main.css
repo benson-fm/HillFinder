@@ -4,6 +4,10 @@
 @import url('https://fonts.googleapis.com/css?family=Nerko+One');
 @import url('https://fonts.googleapis.com/css?family=NATS');
 
+body {
+    margin: 0;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -33,7 +37,7 @@ li {
     display: inline;
 }
 
-
+/* Grid */
 .item1 { grid-area: header; }
 .item2 { grid-area: listing-cards; }
 .item3 { grid-area: filter; }
@@ -46,12 +50,12 @@ li {
     'listing-cards listing-cards listing-cards listing-cards filter filter'
     'footer footer footer footer footer footer';
   gap: 10px;
-  background-color: #2196F3;
+  background-color: #c6beb5;
   padding: 10px;
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #c6beb5;;
   padding: 20px 0;
   font-size: 30px;
 }
@@ -103,7 +107,7 @@ li {
 
 /* Listings Cards */
 #listingCards {
-    margin-left: 30px;
+    margin-left: 50px;
 }
 
 .card {
@@ -113,6 +117,7 @@ li {
     display: inline-block;
     margin: 15px;
     border-radius: 15px;
+    background-color: white;
 }
 
 .cardImg {
@@ -120,11 +125,12 @@ li {
 }
   
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 }
   
 .container {
     padding: 2px 16px;
+    /* background-color: #c6beb5; */
 }
 
 .listingInfoRow1 {
@@ -159,11 +165,16 @@ li {
 #filterCard {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width: 475px;
+    width: 425px;
     display: inline-block;
     margin: 15px;
     border-radius: 15px;
-}  
+    background-color: white;
+}
+
+#filterCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
 
 #filtersTitle {
     margin-bottom: 0px;
@@ -171,6 +182,7 @@ li {
 
 .filterRow {
     position: relative;
+    height: 75px;
 }
 
 .filterName {
@@ -180,13 +192,33 @@ li {
 select{
     border:none;
     padding: 10px 20px;
-    border-radius:5px;
+    border-radius: 15px;
     position: absolute;
     width: 200px;
     top: 30px;
     right: 0;
+    background-color: #f7eb5f;
 }
 
 select:focus{
     outline:none;
 }
+
+#submitButton {
+    width: 100%;
+    margin: 20px 0px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: #1b3d6d;
+    color: #ffd200;
+    font-size: 20px;
+}
+
+/* Colors
+UCI Blue: #0064a4
+UCI Gold: #ffd200
+Light Blue: #6aa2b8
+Light Grey: #c6beb5
+Light Yellow: #f7eb5f
+Dark Blue: #1b3d6d
+*/

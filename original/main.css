@@ -3,34 +3,49 @@
 
 @import url('https://fonts.googleapis.com/css?family=Nerko+One');
 @import url('https://fonts.googleapis.com/css?family=NATS');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: #0064a4;
 }
 
-li {
-    display: inline;
-    color: #1B3D6D;
-}
 
-#logo {
-    float: left;
+.logo {
     font-family: "Nerko One", sans-serif;
-    
 }
 
-#quote {
-    float: right;
+.quote {
+    margin: 20px;
+    font-family: "Open Sans", sans-serif;
 }
 
-#listing-title {
-    float: right;
+
+.bottom-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
 }
 
-#listing-nums {
-    display: inline;
+.listings-title {
+    margin: 0;
+}
+
+.side-listings {
+    margin: 0px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+hr {
+    margin: 20px auto;
+    border: none;
+    height: 1px;
+    background-color: white;
 }
 
 
@@ -56,39 +71,6 @@ li {
   font-size: 30px;
 }
 
-/* .item1-header {
-    grid-area: logo;
-}
-
-.item2-header {
-    grid-area: quote;
-}
-
-.item3-header {
-    grid-area: listings-title;
-}
-
-.item4-header {
-    grid-area: divider;
-}
-
-
-.grid-container-header {
-    display: grid;
-    grid-template-areas:
-        'logo quote'
-        'listings-title listings-title'
-        'divider divider';
-    gap: 10px;
-    background-color: #2196F3;
-    padding: 10px;
-}
-
-.item {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px 0;
-    font-size: 30px;
-  } */
 
 
 /* Listings Text */
@@ -100,6 +82,9 @@ li {
     display: inline;
 }
 
+#listing-numbers {
+    display: inline;
+}
 
 /* Listings Cards */
 #listingCards {

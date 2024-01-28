@@ -251,6 +251,55 @@ select:focus{
     font-size: 20px;
 }
 
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity is ease-in-out;
+}
+
+.loader {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 250px;
+    left: 700px;
+    opacity: 0;
+    animation: loader 2s infinite ease;
+    transition: opacity is ease-in-out;
+}
+
+.loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    animation: loader-inner 2s infinite ease-in;
+    width: 100%;
+    opacity: 0;
+    transition: opacity is ease-in-out;
+}
+
+@keyframes loader {
+    0% { transform: rotate(0deg);}
+    50% { transform: rotate(360deg);}
+
+}
+
+/* @keyframes loader-inner {
+    0% {height: 0%;}
+    25% {height: 0%;}
+    50% {height: 100%;}
+    75% {height: 100%;}
+    100% {height: 0%;}
+} */
+
 #submitButton:hover {
     cursor: crosshair;
 }

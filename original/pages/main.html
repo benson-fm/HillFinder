@@ -166,12 +166,38 @@
                                     </select>
                                 </div>
 
-                                <input type="submit" value="Submit &rarr;" id="submitButton"/>
+                                <input type="submit" value="Submit &rarr;" id="submitButton" onclick="toggleVisibility(['loader-wrapper', 'loader', 'loader-inner'])"/>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    
+    <div class="loader-wrapper">
+        <p>loading...</p>
+        <span class="loader"><img class="loader-inner" src="../anteater_2.png" alt="anteater" style="width: 100px; height: 100px"></span></span>
+    </div>
+    <script>
+        function toggleVisibility(elementIds) {
+            elementIds.forEach(function(elementId) {
+                var elements = document.getElementsByClassName(elementId);
+                var body = document.body;
+                body.style.overflow = "hidden";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                Array.from(elements).forEach(function(element) {
+                    // Show the element by changing its display property
+                    element.style.opacity = 1;
+
+                    // After 3 seconds, hide the element
+                    setTimeout(function() {
+                        element.style.opacity = 0;
+                        body.style.overflow = "auto";
+                    }, 5000);
+                });
+            });
+        }
+    </script>
     <!-- <script src="../js/listings.js"></script>
     <script src="../js/distance.js"></script>
     <script src="../js/filter.js"></script> -->

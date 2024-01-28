@@ -263,6 +263,7 @@ select:focus{
     align-items: center;
     opacity: 0;
     transition: opacity is ease-in-out;
+    z-index: -1;
 }
 
 .loader {
@@ -275,6 +276,7 @@ select:focus{
     opacity: 0;
     animation: loader 2s infinite ease;
     transition: opacity is ease-in-out;
+    z-index: -1;
 }
 
 .loader-inner {
@@ -284,6 +286,7 @@ select:focus{
     width: 100%;
     opacity: 0;
     transition: opacity is ease-in-out;
+    z-index: -1;
 }
 
 @keyframes loader {

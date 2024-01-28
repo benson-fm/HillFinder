@@ -188,11 +188,12 @@
                 Array.from(elements).forEach(function(element) {
                     // Show the element by changing its display property
                     element.style.opacity = 1;
-
+                    document.querySelector('.loader-wrapper').style.zIndex = 999
                     // After 3 seconds, hide the element
                     setTimeout(function() {
                         element.style.opacity = 0;
                         body.style.overflow = "auto";
+                        document.querySelector('.loader-wrapper').style.zIndex = -1
                     }, 5000);
                 });
             });

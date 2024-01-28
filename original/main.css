@@ -2,50 +2,67 @@
 0 */
 
 @import url('https://fonts.googleapis.com/css?family=Nerko+One');
-@import url('https://fonts.googleapis.com/css?family=NATS');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
+body {
+    margin: 0;
+}
 
 .top-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    color: #0064a4;
+    padding: 0px;
+    color: #1B3D6D;
 }
 
 
 .logo {
     font-family: "Nerko One", sans-serif;
+    font-size: 90px;
+    margin: 20px;
+    margin-top: 0px;
+    padding: 0px;
 }
 
 .quote {
     margin: 20px;
     font-family: "Open Sans", sans-serif;
+    margin-top: 15px;
+    font-size: 50px;
 }
 
 
 .bottom-header {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 0px;
+    padding-left: 20px;
 }
 
 .listings-title {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    font-size: 40px;
 }
 
 .side-listings {
     margin: 0px;
-    margin-top: 10px;
+    margin-top: 19px;
     margin-left: 10px;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
 }
 
 hr {
-    margin: 20px auto;
-    border: none;
-    height: 1px;
-    background-color: white;
+    margin: 0px auto;
+    border: 0px;
+    height: 4px;
+    background-color: #E6E6E6;
 }
 
 /* Grid */
@@ -61,17 +78,13 @@ hr {
     'listing-cards listing-cards listing-cards listing-cards filter filter'
     'footer footer footer footer footer footer';
   gap: 10px;
-  background-color: #c6beb5;
   padding: 10px;
 }
 
 .grid-container > div {
-  background-color: #c6beb5;;
   padding: 20px 0;
   font-size: 30px;
 }
-
-
 
 /* Listings Text */
 #listingsTitle {
@@ -98,7 +111,8 @@ hr {
     display: inline-block;
     margin: 15px;
     border-radius: 15px;
-    background-color: white;
+    background-color: #C6BEB5;
+    font-family: 'Inter', sans-serif;
 }
 
 .cardImg {
@@ -116,30 +130,39 @@ hr {
 
 .listingInfoRow1 {
     position: relative;
+    height: 20px;
 }
 
 .listingName {
+    color:#ffd200;
     display: inline-block;
+    margin-top: 10px;
 }
 
 .listingPrice {
+    font-weight: bolder;
     display: inline-block;
     position: absolute;
     right: 0;
+    margin-top: 10px;
 }
 
 .listingInfoRow2 {
     position: relative;
+    height: 90px;
 }
 
 .listingAddress {
     display: inline-block;
+    color:#1B3D6D;
+    font-weight: bolder;
 }
 
 .listingDistance {
     display: inline-block;
     position: absolute;
     right: 0;
+    color: #75706A
 }
 
 /* Filters */
@@ -150,7 +173,8 @@ hr {
     display: inline-block;
     margin: 15px;
     border-radius: 15px;
-    background-color: white;
+    background-color: #C6BEB5;
+    font-family: 'Inter', sans-serif;
 }
 
 #filterCard:hover {
@@ -164,26 +188,46 @@ hr {
 .filterRow {
     position: relative;
     height: 75px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .filterName {
     display: inline-block;
+    margin-top: 35px;
 }
 
 select{
-    border:none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    position: absolute;
     width: 200px;
     top: 30px;
     right: 0;
-    background-color: #f7eb5f;
+    height: 40px;
+    cursor: pointer;
+    word-wrap: break-word;
+    line-height: 1em;
+    white-space: normal;
+    outline: 0;
+    transform: rotateZ(0);
+    min-width: 14em;
+    min-height: 0.78571429em;
+    background: #fff;
+    display: inline-block;
+    padding: 0.78571429em 2em 0.78571429em 1em;
+    color: rgba(0,0,0,.87);
+    box-shadow: none;
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: 0.28571429rem;
+    transition: box-shadow .1s ease,width .1s ease;
+    -webkit-tap-highlight-color: transparent;
+    text-align: left;
+    position: relative;
 }
 
 select:focus{
     outline:none;
 }
+
+
 
 #submitButton {
     width: 100%;

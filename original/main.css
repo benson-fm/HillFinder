@@ -164,7 +164,10 @@ hr {
     display: inline-block;
     color:#1B3D6D;
     font-weight: bolder;
-    font-size: 18px;
+    font-size: 20px;
+    padding-top: 10px;
+    max-width: 250px;
+    word-wrap: break-word
 }
 
 .listingDistance {

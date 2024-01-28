@@ -26,27 +26,65 @@ form.addEventListener("submit", (event) => {
     }
     console.log('Button Pressed')
     getListings(data['price'],data['bed'])
-
 })
 
 function getListings(price_status,bed_status){
     const url = 'http://127.0.0.1:5000'
     const response = fetch(url + '/searchlistings/' + price_status + '/' + bed_status)
     .then(response => response.json())
-    .then(json=> {
+    .then(json => {
+
+        function shuffle(array) {
+            let currentIndex = array.length,  randomIndex;
+          
+            // While there remain elements to shuffle.
+            while (currentIndex > 0) {
+          
+              // Pick a remaining element.
+              randomIndex = Math.floor(Math.random() * currentIndex);
+              currentIndex--;
+          
+              // And swap it with the current element.
+              [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+            }
+          
+            return array;
+        }
+        
+        json = shuffle(json)
+
+        console.log(json)
+          
+
         updateListings(json)
         console.log('Done with listings')
         updateDistances(json)
         console.log('Done With Distances')
         updateBoba(json)
         console.log('Done With Boba')
-
+    
     })
 }
 
 
+function random_listing(picked) {
+    count = 0
+    while (count == 0) {
+    x = Math.floor(Math.random() * data.length)
+    if(x in picked == false) {
+        picked.append(x)
+        count += 1
+    }
+    }
+    return picked, x
+}
+
+
 function updateListings(data) {
-    for(let i = 1; i <= 6; i++) {
+    picked = []
+    count = 0
+    for(let i=1; i <= 6; i++) {
         listing = data[i-1]
         listing_address = document.getElementById("address"+i.toString())
         listing_address.innerHTML = `<b>${listing["address"].replace(", Irvine, CA", "")}</b>`
@@ -130,7 +168,7 @@ function updateBoba(data){
     .then(response => response.json())
     .then(json => {
         distanceBoba = document.getElementById('boba' + i.toString())
-        distanceBoba.innerHTML = `${json['name'].replace(' - Irvine','')}, \n${Math.round(json['distance'])}m`
+        distanceBoba.innerHTML = `${json['name'].replace(' - Irvine','')} \n ${Math.round(json['distance'])}m`
     })
     
     }

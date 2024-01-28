@@ -130,7 +130,7 @@ function updateBoba(data){
     .then(response => response.json())
     .then(json => {
         distanceBoba = document.getElementById('boba' + i.toString())
-        distanceBoba.innerHTML = `Nearest Boba:${json['name'].replace(' - Irvine','')}, ${Math.round(json['distance'])}m`
+        distanceBoba.innerHTML = `${json['name'].replace(' - Irvine','')}, \n${Math.round(json['distance'])}m`
     })
     
     }

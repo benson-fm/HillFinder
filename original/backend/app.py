@@ -107,16 +107,23 @@ def total_scores(price_score, bed_score, bath_score, area_score):
 
 @app.route('/searchboba/<location>')
 def get_boba():
-
     # _YELP_PARAMETERS['location'] = location
     response = requests.get(_YELP_URL, params=_YELP_PARAMETERS, headers= {'Authorization':'Bearer ' + _YELP_API_KEY})
     response_content = json.loads(response.text)
     print(response_content['businesses'][0]['name'])
-    print(response_content['businesses'][0]['distance'])
+    closest_distance = response_content['businesses'][0]['distance']
     boba_priority = 2
     boba_score = rank_boba(response_content['businesses'][0]['distance'], boba_priority)
 
+    return closest_distance
 
+# get status from form input
+# returns dictionary of statuses
+def get_statuses() -> dict(str):
+    pass
+
+def get_distance() -> str:
+    pass
 
 # get_boba()
 
@@ -126,19 +133,30 @@ def get_listings()-> list:
     response = requests.get(_ZILLOW_API_URL, params=_ZILLOW_PARAMETERS)
     response_content = json.loads(response.text)
     content = response_content['data']['cat1']['searchResults']['listResults']
-    listings = list()
-    #@get_prios price_priorty = x, bed_priorty = x, bath-prop......
-    #.5, 1, 2
-    price_priority = 2
-    bed_priorty = 2
-    bath_priority = 2
-    area_priority = 2
+    listings = []
+
+    # get input from form
+    statuses = get_statuses()
+    price_status = statuses['price']
+    area_status = statuses['area']
+    bed_status = statuses['bed']
+    bath_status = statuses['bath']
+    boba_status = statuses['boba']
+
+    price_priority = 1
+    bed_priority = 1
+    bath_priority = 1
+    area_priority = 1
+    boba_priority = 1
+
     for listing in content:
-        listing_data = dict()
+        listing_data = {}
         listing_data['address'] = listing['address']
+        
+        # gets unit with lowest price
         if 'price' in listing.keys():
             listing_data['price'] = make_int(listing['price'])
-            price_score = rank_price(listing_data['price'], price_priority)#get price score from front end form
+            price_score = rank_price(listing_data['price'], price_priority, price_status)
         else:
             units = listing['units']
             temp = units[0]
@@ -149,23 +167,22 @@ def get_listings()-> list:
                     lowest = make_int(unit['price'])
 
             listing_data['price'] = lowest
-            price_score = rank_price(listing_data['price'], price_priority)#get price score from front end form
+            price_score = rank_price(listing_data['price'], price_priority, price_status)
 
         listing_data['imgSrc'] = listing['imgSrc']
         listing_data['beds'] = listing['beds']
-        bed_score = rank_price(listing_data['beds'], bed_priorty)
+        bed_score = rank_bed(listing_data['beds'], bed_priority, bed_status)
         listing_data['baths'] = listing['baths']
-        bath_score = rank_price(listing_data['baths'], bath_priority)
+        bath_score = rank_bath(listing_data['baths'], bath_priority, bath_status)
         listing_data['area'] = listing['area']
-        area_score = rank_price(listing_data['area'], area_priority)
+        area_score = rank_area(listing_data['area'], area_priority, area_status)
+        
         listing_data['overall_score'] = total_scores(price_score, bed_score, bath_score, area_score) #get boba score in here somehow as well
+
         listings.append(listing_data)
     return listings
 
 
-
-
-                
 if __name__ == '__main__':
     app.run()
 

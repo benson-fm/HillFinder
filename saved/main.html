@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HillFinder</title>
+    <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+    <div class="grid-container">
+        <div class="item1">
+            <header>
+                <div id="navbar" class="grid-container-head">
+                    <ul>
+                        <li class="item1-header">HillFinder</li>
+                        <li class="item2-header">finding your hill</li>
+                    </ul>
+                </div>
+            </header>
+
+            <div id="listingsText">
+                <h2 id="listingsTitle">Top 6 Available Listings</h2>
+                <p id="items">6 items</p>
+            </div>
+            <hr>
+        </div>
+
+        <div class="item2">
+            <section id="listings">
+                <div id="listingCards">
+                    <div id="row1">
+                        <div class="card" id="card1">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <div class="container">
+                                <div class="listingInfoRow1">
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
+                                </div>
+                                <div class="listingInfoRow2">
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="card2">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <div class="container">
+                                <div class="listingInfoRow1">
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
+                                </div>
+                                <div class="listingInfoRow2">
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="row2">
+                        <div class="card" id="card3">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <div class="container">
+                                <div class="listingInfoRow1">
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
+                                </div>
+                                <div class="listingInfoRow2">
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="card4">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <div class="container">
+                                <div class="listingInfoRow1">
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
+                                </div>
+                                <div class="listingInfoRow2">
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="row3">
+                        <div class="card" id="card5">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <div class="container">
+                                <div class="listingInfoRow1">
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
+                                </div>
+                                <div class="listingInfoRow2">
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" id="card6">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <div class="container">
+                                <div class="listingInfoRow1">
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
+                                </div>
+                                <div class="listingInfoRow2">
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- filters: bed, boba, area, price, distance-->
+
+        <div class="item3">
+            <div id="filters">
+                <div id="filterCard">
+                    <div class="container">
+                        <form action="" id="filterForm">
+                            <h4 id="filtersTitle">Filters</h1>
+                                <div id="filterPrice" class="filterRow">
+                                    <h6 class="filterName"><b>Price Maximum</b></h4>
+                                    <select name="selectPrice" id="selectPrice">
+                                        <option value="low">Broke College Student</option>
+                                        <option value="medium">Loaded College Student</option>
+                                        <option value="high" selected>Legacy Student</option>
+                                    </select>
+                                </div>
+                                <div id="filterArea" class="filterRow">
+                                    <h6 class="filterName"><b>Square Feet</b></h4>
+                                    <select name="selectArea" id="selectArea">
+                                        <option value="low">Lump</option>
+                                        <option value="medium">Mound</option>
+                                        <option value="high" selected>The Hill</option>
+                                    </select>
+                                </div>
+                                <div id="filterDistance" class="filterRow">
+                                    <h6 class="filterName"><b>Distance Maximum</b></h4>
+                                    <select name="selectDistance" id="selectDistance">
+                                        <option value="low">Walker</option>
+                                        <option value="medium">Biker</option>
+                                        <option value="high" selected>Driver</option>
+                                    </select>
+                                </div>
+                                <div id="filterBed" class="filterRow">
+                                    <h6 class="filterName"><b>Number of Beds</b></h4> 
+                                    <select name="selectBed" id="selectBed">
+                                        <option value="low">No Bodies</option>
+                                        <option value="medium">Some Bodies</option>
+                                        <option value="high" selected>A Lot of Bodies</option>
+                                    </select>
+                                </div>
+                                <div id="filterBath" class="filterRow">
+                                    <h6 class="filterName"><b>Number of Baths</b></h4>
+                                    <select name="selectBath" id="selectBath">
+                                        <option value="low">Never Shower Gang</option>
+                                        <option value="medium">Like to Stay Clean</option>
+                                        <option value="high" selected>Dirty Rag</option>
+                                    </select>
+                                </div>
+                                <div id="filterBoba" class="filterRow">
+                                    <h6 class="filterName"><b>Boba Feels</b></h4> 
+                                    <select name="selectBoba" id="selectBoba">
+                                        <option value="low">Alien</option>
+                                        <option value="medium">Average UCI Student</option>
+                                        <option value="high" selected>Boba Fein</option>
+                                    </select>
+                                </div>
+
+                                <input type="submit" value="Submit &rarr;" id="submitButton"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="item4">
+        <p>owned by your mom</p>
+    </div>
+    <script src="../js/distance.js"></script>
+    <script src="../js/filter.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-R7A7AD7HbNTqID9LeMI-EQ96DTKJ0rA&callback=getDistance" defer></script>
+</body>
+</html>

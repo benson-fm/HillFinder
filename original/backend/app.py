@@ -50,26 +50,26 @@ def rank_price(price, priority, status):
 
 def rank_boba(distance, priority, status):
     if distance <= 300:
-        if status == 'low':
+        if status == 'high':
             score += 1
     elif distance < 3000:
         if status == 'medium':
             score += 1
     else:
-        if status == 'high':
+        if status == 'low':
             score += 1
 
     return score
 
 def rank_bed(beds, priority, status):
     if beds > 5:
-        if status == 'low':
+        if status == 'high':
             score += 1
     elif beds >= 3:
         if status == 'medium':
             score += 1
     else:
-        if status == 'high':
+        if status == 'low':
             score += 1
 
     return score 
@@ -77,25 +77,28 @@ def rank_bed(beds, priority, status):
 
 def rank_bath(baths, priority, status):
     if baths > 4:
-        if status == 'low':
+        if status == 'high':
             score += 1
     elif baths > 2:
         if status == 'medium':
             score += 1
     else:
-        if status == 'high':
+        if status == 'low':
             score += 1
 
     return score 
 
 
 def rank_area(area, priority, status):
-    if area > 5000:
-        score = 3
-    elif area > 2000:
-        score = 2
+    if area < 2000:
+        if status == 'low':
+            score += 1
+    elif area < 5000:
+        if status == 'medium':
+            score += 1
     else:
-        score = 1
+        if status == 'high':
+            score += 1
 
     return score 
 

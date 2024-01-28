@@ -2,7 +2,7 @@ function getDistance() {
     const service = new google.maps.DistanceMatrixService();
     // build request
     const origin1 = "UC Irvine";
-    const destinationA = "10510 Moledo Ct Elk Grove";
+    const destinationA = "Diamond Jamboree Irvine";
     const request = {
         origins: [origin1],
         destinations: [destinationA],
@@ -35,3 +35,13 @@ function sendData(data) {
 }
 
 sendData(getDistance())
+
+function getListings(){
+    const url = 'http://127.0.0.1:5000'
+    const response = fetch(url + '/searchlistings')
+    .then(response => response.json())
+    .then(json=> {
+        console.log(json);
+    })
+}
+

@@ -4,6 +4,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
+@app.route('/')
+def hello():
+    return 'HELLO'
+
 #yelp api key: 
 _YELP_API_KEY = 'a--O_Ir2DPGxKHftjr2DC5aPymbFZ9X95tfRzEs0PB3eewr8btwTSjfKjRaInCpuQ7tw311U5SsLRkCGBzpgvC7PRz0y_HEUY8R58gClGMXrwrmGgj70UTmeIEK1ZXYx'
 _YELP_URL = 'https://api.yelp.com/v3/businesses/search'
@@ -22,7 +26,6 @@ _ZILLOW_API_URL = "https://app.scrapeak.com/v1/scrapers/zillow/listing"
 _ZILLOW_PARAMETERS = {"api_key": _ZILLOW_API_KEY, "url": _LISTING_URL}
 
 
-
 def make_int(price: str) -> int:
     new = ''
     for x in price:
@@ -32,63 +35,77 @@ def make_int(price: str) -> int:
     return int(new)
 
 
-def rank_price(price, priority):
+def rank_price(price, priority, status):
     if price <= 2300:
-        score = 3
+        score += 1
     elif price < 15000:
-        score = 2 
+        if status == 'high' or status == 'medium':
+            score +=1
     else:
-        score = 1
+        if status == 'high':
+            score +=1
 
-    return score * priority
+    return score 
     
 
-def rank_boba(distance, priority):
+def rank_boba(distance, priority, status):
     if distance <= 300:
-        score = 3
+        if status == 'high':
+            score += 1
     elif distance < 3000:
-        score = 2
+        if status == 'medium':
+            score += 1
     else:
-        score = 1
+        if status == 'low':
+            score += 1
 
-    return score * priority
+    return score
 
-def rank_bed(beds, priority):
+def rank_bed(beds, priority, status):
     if beds > 5:
-        score = 3
+        if status == 'high':
+            score += 1
     elif beds >= 3:
-        score = 2
+        if status == 'medium':
+            score += 1
     else:
-        score = 1
+        if status == 'low':
+            score += 1
 
-    return score * priority
+    return score 
 
 
-def rank_bath(baths, priority):
+def rank_bath(baths, priority, status):
     if baths > 4:
-        score = 3
+        if status == 'high':
+            score += 1
     elif baths > 2:
-        score = 2
+        if status == 'medium':
+            score += 1
     else:
-        score = 1
+        if status == 'low':
+            score += 1
 
-    return score * priority
+    return score 
 
 
-def rank_area(area, priority):
-    if area > 5000:
-        score = 3
-    elif area > 2000:
-        score = 2
+def rank_area(area, priority, status):
+    if area < 2000:
+        if status == 'low':
+            score += 1
+    elif area < 5000:
+        if status == 'medium':
+            score += 1
     else:
-        score = 1
+        if status == 'high':
+            score += 1
 
-    return score * priority
+    return score 
 
 def total_scores(price_score, bed_score, bath_score, area_score):
     return price_score + bed_score + bath_score + area_score #+ bathscore
 
-# @app.get(':/searchboba/<location>')
+@app.route('/searchboba/<location>')
 def get_boba():
 
     # _YELP_PARAMETERS['location'] = location
@@ -101,10 +118,10 @@ def get_boba():
 
 
 
-get_boba()
+# get_boba()
 
 #/ Make the API request
-@app.get('/searchlistings')
+@app.route('/searchlistings')
 def get_listings()-> list:
     response = requests.get(_ZILLOW_API_URL, params=_ZILLOW_PARAMETERS)
     response_content = json.loads(response.text)
@@ -149,6 +166,9 @@ def get_listings()-> list:
 
 
                 
+if __name__ == '__main__':
+    app.run()
+
 
 
             

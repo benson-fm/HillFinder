@@ -7,9 +7,6 @@ app = Flask(__name__)
 
 CORS(app)
 
-@app.route('/')
-def hello():
-    return 'HELLO'
 
 #yelp api key: 
 _YELP_API_KEY = 'a--O_Ir2DPGxKHftjr2DC5aPymbFZ9X95tfRzEs0PB3eewr8btwTSjfKjRaInCpuQ7tw311U5SsLRkCGBzpgvC7PRz0y_HEUY8R58gClGMXrwrmGgj70UTmeIEK1ZXYx'
@@ -83,49 +80,23 @@ def rank_bed(beds, priority, status):
     return score 
 
 
-def rank_bath(baths, priority, status):
-    score = 0
-    if baths > 4:
-        if status == 'high':
-            score += 1
-    elif baths > 2:
-        if status == 'medium':
-            score += 1
-    else:
-        if status == 'low':
-            score += 1
 
-    return score 
-
-
-def rank_area(area, priority, status):
-    score = 0
-    if area < 2000:
-        if status == 'low':
-            score += 1
-    elif area < 5000:
-        if status == 'medium':
-            score += 1
-    else:
-        if status == 'high':
-            score += 1
-
-    return score 
-
-def total_scores(price_score, bed_score, bath_score, area_score):
-    return price_score + bed_score + bath_score + area_score #+ bathscore
+def total_scores(price_score, bed_score):
+    return price_score + bed_score  #+ bathscore
 
 @app.route('/searchboba/<location>')
-def get_boba():
+def get_boba(location):
     # _YELP_PARAMETERS['location'] = location
     response = requests.get(_YELP_URL, params=_YELP_PARAMETERS, headers= {'Authorization':'Bearer ' + _YELP_API_KEY})
     response_content = json.loads(response.text)
-    print(response_content['businesses'][0]['name'])
+    boba_info = dict()
+    boba_info['name'] = response_content['businesses'][0]['name']
     closest_distance = response_content['businesses'][0]['distance']
+    boba_info['distance'] = closest_distance
     boba_priority = 2
-    boba_score = rank_boba(response_content['businesses'][0]['distance'], boba_priority)
+    boba_score = rank_boba(response_content['businesses'][0]['distance'], boba_priority,'low')
 
-    return closest_distance
+    return boba_info
 
 # get status from form input
 # returns dictionary of statuses
@@ -148,26 +119,19 @@ def get_listings()-> list:
     # get input from form
     statuses = get_statuses()
     # price_status = statuses['price']
-    # area_status = statuses['area']
     # bed_status = statuses['bed']
-    # bath_status = statuses['bath']
     # boba_status = statuses['boba']
     price_status = 'low'
-    area_status = 'low'
     bed_status = 'low'
-    bath_status = 'low'
     boba_status = 'low'
 
     price_priority = 1
     bed_priority = 1
-    bath_priority = 1
-    area_priority = 1
     boba_priority = 1
 
     for listing in content:
         listing_data = {}
         listing_data['address'] = listing['address']
-        
         # gets unit with lowest price
         if 'price' in listing.keys():
             listing_data['price'] = make_int(listing['price'])
@@ -198,7 +162,7 @@ def get_listings()-> list:
         #listing_data['area'] = listing['area']
         #area_score = rank_area(listing_data['area'], area_priority, area_status)
         area_score = 1
-        listing_data['overall_score'] = total_scores(price_score, bed_score, bath_score, area_score) #get boba score in here somehow as well
+        listing_data['overall_score'] = total_scores(price_score, bed_score) #get boba score in here somehow as well
 
         listings.append(listing_data)
     return listings

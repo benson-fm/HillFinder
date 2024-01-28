@@ -11,10 +11,10 @@ CORS(app)
 #yelp api key: 
 _YELP_API_KEY = 'a--O_Ir2DPGxKHftjr2DC5aPymbFZ9X95tfRzEs0PB3eewr8btwTSjfKjRaInCpuQ7tw311U5SsLRkCGBzpgvC7PRz0y_HEUY8R58gClGMXrwrmGgj70UTmeIEK1ZXYx'
 _YELP_URL = 'https://api.yelp.com/v3/businesses/search'
-_YELP_PARAMETERS = {'location':'University of California, Irvine',
+_YELP_PARAMETERS = {
                     "term": 'Boba', 
                     "sort_by": "distance",
-                    "limit": 10}
+                    "limit": 1}
 
 
 #/ Set your API key and listing URL
@@ -86,7 +86,7 @@ def total_scores(price_score, bed_score):
 
 @app.route('/searchboba/<location>')
 def get_boba(location):
-    # _YELP_PARAMETERS['location'] = location
+    _YELP_PARAMETERS['location'] = location
     response = requests.get(_YELP_URL, params=_YELP_PARAMETERS, headers= {'Authorization':'Bearer ' + _YELP_API_KEY})
     response_content = json.loads(response.text)
     boba_info = dict()
@@ -106,7 +106,6 @@ def get_statuses() -> dict[str]:
 def get_distance() -> str:
     pass
 
-# get_boba()
 
 @app.route('/')
 def hello():
@@ -114,15 +113,15 @@ def hello():
     return render_template('main.html', data=data)
 
 #/ Make the API request
-@app.route('/searchlistings')
-def get_listings()-> list:
+@app.route('/searchlistings/<price_status>/<bed_status>')
+def get_listings(price_status, bed_status)-> list:
     response = requests.get(_ZILLOW_API_URL, params=_ZILLOW_PARAMETERS)
     response_content = json.loads(response.text)
     content = response_content['data']['cat1']['searchResults']['listResults']
     listings = []
 
     # get input from form
-    statuses = get_statuses()
+    # statuses = get_statuses()
     # price_status = statuses['price']
     # bed_status = statuses['bed']
     # boba_status = statuses['boba']

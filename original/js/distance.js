@@ -34,7 +34,7 @@ function sendData(data) {
     console.log(data)    
 }
 
-sendData(getDistance())
+//sendData(getDistance())
 
 
 function getListings(){

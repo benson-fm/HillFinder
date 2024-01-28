@@ -73,7 +73,7 @@ data = [
     }
 ]
 
-function updateListings() {
+function updateListings(data) {
     for(let i = 1; i <= 6; i++) {
         listing = data[i-1]
         card = document.getElementById("card"+i.toString())

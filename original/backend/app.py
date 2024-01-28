@@ -1,15 +1,11 @@
 import requests
 import json
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 
 app = Flask(__name__)
 
 CORS(app)
-
-@app.route('/')
-def hello():
-    return 'HELLO'
 
 #yelp api key: 
 _YELP_API_KEY = 'a--O_Ir2DPGxKHftjr2DC5aPymbFZ9X95tfRzEs0PB3eewr8btwTSjfKjRaInCpuQ7tw311U5SsLRkCGBzpgvC7PRz0y_HEUY8R58gClGMXrwrmGgj70UTmeIEK1ZXYx'
@@ -136,6 +132,11 @@ def get_distance() -> str:
     pass
 
 # get_boba()
+
+@app.route('/')
+def hello():
+    data = {}
+    return render_template('main.html', data=data)
 
 #/ Make the API request
 @app.route('/searchlistings')

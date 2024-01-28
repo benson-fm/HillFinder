@@ -6,6 +6,13 @@
     <title>HillFinder</title>
     <link rel="stylesheet" href="../main.css">
 </head>
+<script>
+    const url = 'http://127.0.0.1:5000'
+    const response = fetch(url + '/searchlistings')
+    .then(response => response.json())
+    .then(json=> {
+        console.log(json);
+    })</script>
 <body>
     <div class="grid-container">
         <div class="item1">
@@ -25,84 +32,84 @@
                 <div id="listingCards">
                     <div id="row1">
                         <div class="card" id="card1">
-                            <img id="cardImg1"class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
                             <div class="container">
                                 <div class="listingInfoRow1">
-                                    <h4 id="address1" class="listingName"><b>Plaza Verde</b></h4> 
-                                    <p id="price1" class="listingPrice">$1000</p>
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
                                 </div>
                                 <div class="listingInfoRow2">
-                                    <p id="boba1" class="listingAddress">9999 Mesa Rd</p> 
-                                    <p id="listingDistance1" class="listingDistance">10 mi</p>
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card" id="card2">
-                            <img id="cardImg2" class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
                             <div class="container">
                                 <div class="listingInfoRow1">
-                                    <h4 id="address2" class="listingName"><b>Plaza Verde</b></h4> 
-                                    <p id="price2" class="listingPrice">$1000</p>
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
                                 </div>
                                 <div class="listingInfoRow2">
-                                    <p id="boba2" class="listingAddress">9999 Mesa Rd</p> 
-                                    <p id="listingDistance2" class="listingDistance">10 mi</p>
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="row2">
                         <div class="card" id="card3">
-                            <img id="cardImg3" class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
                             <div class="container">
                                 <div class="listingInfoRow1">
-                                    <h4 id="address3"class="listingName"><b>Plaza Verde</b></h4> 
-                                    <p id="price3" class="listingPrice">$1000</p>
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
                                 </div>
                                 <div class="listingInfoRow2">
-                                    <p id="boba3" class="listingAddress">9999 Mesa Rd</p> 
-                                    <p id="listingDistance3" class="listingDistance">10 mi</p>
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card" id="card4">
-                            <img id="cardImg4" class="cardImg" src="../house.webp" alt="House" style="width:100%">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
                             <div class="container">
                                 <div class="listingInfoRow1">
-                                    <h4 id="address4"class="listingName"><b>Plaza Verde</b></h4> 
-                                    <p id="price4" class="listingPrice">$1000</p>
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
                                 </div>
                                 <div class="listingInfoRow2">
-                                    <p id="boba4" class="listingAddress">9999 Mesa Rd</p> 
-                                    <p id="listingDistance4" class="listingDistance">10 mi</p>
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="row3">
                         <div class="card" id="card5">
-                            <img id="cardImg5" class="cardImg5" src="../house.webp" alt="House" style="width:100%">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
                             <div class="container">
                                 <div class="listingInfoRow1">
-                                    <h4 id="address5" class="listingName"><b>Plaza Verde</b></h4> 
-                                    <p id="price5" class="listingPrice">$1000</p>
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
                                 </div>
                                 <div class="listingInfoRow2">
-                                    <p id="boba5" class="listingAddress">9999 Mesa Rd</p> 
-                                    <p id="listingDistance5" class="listingDistance">10 mi</p>
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
                                 </div>
                             </div>
                         </div>
                         <div class="card" id="card6">
-                            <img id="cardImg6" class="cardImg6" src="../house.webp" alt="House" style="width:100%">
+                            <img class="cardImg" src="../house.webp" alt="House" style="width:100%">
                             <div class="container">
                                 <div class="listingInfoRow1">
-                                    <h4 id="address6" class="listingName"><b>Plaza Verde</b></h4> 
-                                    <p id="price6" class="listingPrice">$1000</p>
+                                    <h4 class="listingName"><b>Plaza Verde</b></h4> 
+                                    <p class="listingPrice">$1000</p>
                                 </div>
                                 <div class="listingInfoRow2">
-                                    <p id="boba6" class="listingAddress">9999 Mesa Rd</p> 
-                                    <p id="listingDistance6" class="listingDistance">10 mi</p>
+                                    <p class="listingAddress">9999 Mesa Rd</p> 
+                                    <p class="listingDistance">10 mi</p>
                                 </div>
                             </div>
                     </div>
@@ -175,9 +182,9 @@
     <div class="item4">
         <p>owned by your mom</p>
     </div>
-    <!-- <script src="../js/distance.js"></script>
-    <script src="../js/filter.js"></script> -->
-    <script src="../js/search.js"></script>
+    <script src="../js/listings.js"></script>
+    <script src="../js/distance.js"></script>
+    <script src="../js/filter.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-R7A7AD7HbNTqID9LeMI-EQ96DTKJ0rA&callback=getDistance" defer></script>
 </body>
 </html>

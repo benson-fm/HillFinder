@@ -110,23 +110,23 @@ function updateDistances(data) {
             avoidTolls: false,
         };     
         // get distance matrix response
-    service.getDistanceMatrix(request).then((response) => {
-        // process response
-        distanceMiles = response["rows"][0]["elements"][0]["distance"]["text"]
-        time = response["rows"][0]["elements"][0]["duration"]["text"]
-        console.log(distanceMiles)
-        console.log(time)
-    
-        data = {
-            "distance": distanceMiles,
-            "time": time
-        }
-
-        listingDistance = document.getElementById("listingDistance" + i.toString())
-        listingDistance.innerHTML = `${data['distance']}`
-
+        service.getDistanceMatrix(request).then((response) => {
+            // process response
+            distanceMiles = response["rows"][0]["elements"][0]["distance"]["text"]
+            time = response["rows"][0]["elements"][0]["duration"]["text"]
+            console.log(distanceMiles)
+            console.log(time)
         
-    })   
+            data = {
+                "distance": distanceMiles,
+                "time": time
+            }
+
+            listingDistance = document.getElementById("listingDistance" + i.toString())
+            listingDistance.innerHTML = `${data['distance']}`
+
+            
+        })   
     }
 }
 

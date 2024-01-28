@@ -98,14 +98,6 @@ def get_boba(location):
 
     return boba_info
 
-# get status from form input
-# returns dictionary of statuses
-def get_statuses() -> dict[str]:
-    pass
-
-def get_distance() -> str:
-    pass
-
 
 @app.route('/')
 def hello():

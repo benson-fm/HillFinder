@@ -6,25 +6,23 @@
     <title>HillFinder</title>
     <link rel="stylesheet" href="../main.css">
 </head>
-<script>
-    const url = 'http://127.0.0.1:5000'
-    const response = fetch(url + '/searchlistings')
-    .then(response => response.json())
-    .then(json=> {
-        console.log(json);
-    })</script>
 <body>
     <div class="grid-container">
         <div class="item1">
-                <div class="top-header">
-                    <p class="logo">HillFinder</p>
-                    <p class="quote">finding your hill.</p>
+            <header>
+                <div id="navbar" class="grid-container-head">
+                    <ul>
+                        <li class="item1-header">HillFinder</li>
+                        <li class="item2-header">finding your hill</li>
+                    </ul>
                 </div>
-                <div class="bottom-header">
-                    <h2 class="listings-title">Available Listings</h2>
-                    <p class="side-listings">6 items</p>
-                </div>
-                <hr>
+            </header>
+
+            <div id="listingsText">
+                <h2 id="listingsTitle">Top 6 Available Listings</h2>
+                <p id="items">6 items</p>
+            </div>
+            <hr>
         </div>
 
         <div class="item2">
